@@ -7,8 +7,10 @@
       <% end %>
     </section>
     <section class="micropost_form">
-      <% if logged_in? && !current_user.following.find_by(id: @user.id).nil? %>
-        <%= render 'shared/comment_form' %>
+      <% if logged_in? %>
+        <% if !current_user.following.find_by(id: @user.id).nil? || current_user==@user %>
+          <%= render 'shared/comment_form' %>
+        <% end %>
       <% end %>
     </section>
   </aside>
