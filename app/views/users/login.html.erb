@@ -1,0 +1,18 @@
+<% provide(:title, "Log in") %>
+<h1>Đăng nhập</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:login, url: login_path) do |f| %>
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, "Mật khẩu" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Đăng nhập", class: "btn btn-primary" %>
+    <% end %>
+    <p>Bạn chưa có tài khỏan? <%= link_to "Đăng ký ngay!", signup_path %></p>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render 'shared/user_info' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="user_info">
+      <% if logged_in? %>
+        <% if current_user.id == @user.id %>
+          <%= render 'shared/entry_form' %>
+        <% end %>
+      <% end %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <% if @user.entries.any? %>
+      <h3>Các bài đã đăng (<%= @user.entries.count %>)</h3>
+      <ol class="entries">
+        <%= render @entries %>
+      </ol>
+      <%= will_paginate @entries %>
+    <% end %>
+  </div>
+</div>
