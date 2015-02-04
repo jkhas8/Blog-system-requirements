@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :following, :followers]
+  before_action :logged_in_user, only: []
 
   def index
     @users = User.paginate(page: params[:page])
@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   def show
     @entry = current_user.entries.build if logged_in?
     @user = User.find(params[:id])
-    @entries = @user.entries.paginate(page: params[:page])
+    if current_user==@user
+      @entries = current_user.feed.paginate(page: params[:page])
+    else
+      @entries = @user.entries.paginate(page: params[:page])
+    end
   end
 
   def new

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :new]
 
   def create
     @comment = current_user.comments.build(comment_params)

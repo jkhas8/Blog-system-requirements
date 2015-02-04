@@ -18,7 +18,7 @@
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.entries.any? %>
-      <h3>Các bài đã đăng (<%= @user.entries.count %>)</h3>
+      <h3>Các bài đã đăng</h3>
       <ol class="entries">
         <%= render @entries %>
       </ol>
